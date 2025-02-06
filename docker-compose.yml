@@ -28,7 +28,7 @@ services:
   db:
     image: mysql:8.0
     ports:
-      - "3306:3306"
+      - "3307:3307"
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_USERNAME: root
