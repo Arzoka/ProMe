@@ -18,6 +18,11 @@ class Lilguy extends Model
         'price',
     ];
 
+    public function getImageAttribute($value)
+    {
+        return asset('storage/' . $value);
+    }
+
     public function creator(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');

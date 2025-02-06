@@ -6,9 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Models\Lilguy;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LilguyController extends Controller
 {
+    /**
+     * @param $imageData
+     * @return string
+     */
+    private function saveImageAsPath($imageData): string
+    {
+        $fileName = uniqid('workshop_', true) . '.webp';
+        $filePath = 'images/' . $fileName;
+
+        Storage::disk('public')->put($filePath, file_get_contents($imageData));
+
+        return $filePath;
+    }
+
     public function index() : JsonResponse
     {
         $lilguys = Lilguy::all();
@@ -31,13 +46,15 @@ class LilguyController extends Controller
             'price' => 'required|numeric',
         ]);
 
+        $imagePath = $this->saveImageAsPath($request->image);
+
         $userId = $request->user()->id;
 
         $lilguy = Lilguy::create([
-            'name' => $request->input('name'),
-            'image' => $request->input('image'),
-            'price' => $request->input('price'),
             'creator_id' => $userId,
+            'name' => $request->name,
+            'image' => $imagePath,
+            'price' => $request->price,
         ]);
 
         return response()->json($lilguy, 201);
