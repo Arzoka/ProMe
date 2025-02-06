@@ -1,6 +1,6 @@
 import Api from '@/globals/classes/Api.ts';
 import { useCallback, useState } from 'react';
-import { AuthobjectType, CreateAuthobjectType, CreateTestobjectType, CreateUserType, LoginUserType, TestobjectType, UserType } from '@/types/api';
+import { AuthobjectType, CreateAuthobjectType, CreateLilguyType, CreateTestobjectType, CreateUserType, LilguyType, LoginUserType, TestobjectType, UserType } from '@/types/api';
 
 const useApi = () => {
 	const apiInstance = new Api( import.meta.env.VITE_API_URL );
@@ -36,6 +36,13 @@ const useApi = () => {
 	const updateAuthobject = useCallback( ( id: number, body: CreateAuthobjectType ): Promise<AuthobjectType> => handleRequest( () => apiInstance.authobject.update( id, body ), 'Failed to update authobject' ), [apiInstance, handleRequest] );
 	const deleteAuthobject = useCallback( ( id: number ): Promise<AuthobjectType> => handleRequest( () => apiInstance.authobject.delete( id ), 'Failed to delete authobject' ), [apiInstance, handleRequest] );
 
+	// Lilguy
+	const fetchLilguys = useCallback( (): Promise<LilguyType[]> => handleRequest( () => apiInstance.lilguy.getAll(), 'Failed to fetch lilguys' ), [apiInstance, handleRequest] );
+	const fetchLilguy = useCallback( ( id: number ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.get( id ), 'Failed to fetch lilguy' ), [apiInstance, handleRequest] );
+	const createLilguy = useCallback( ( body: CreateLilguyType ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.create( body ), 'Failed to create lilguy' ), [apiInstance, handleRequest] );
+	const updateLilguy = useCallback( ( id: number, body: CreateLilguyType ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.update( id, body ), 'Failed to update lilguy' ), [apiInstance, handleRequest] );
+	const deleteLilguy = useCallback( ( id: number ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.delete( id ), 'Failed to delete lilguy' ), [apiInstance, handleRequest] );
+
 	// Auth
 	const register = useCallback( ( body: CreateUserType ): Promise<UserType> => handleRequest( () => apiInstance.auth.register( body ), 'Failed to register' ), [apiInstance, handleRequest] );
 	const login = useCallback( ( body: LoginUserType ): Promise<UserType> => handleRequest( () => apiInstance.auth.login( body ), 'Failed to login' ), [apiInstance, handleRequest] );
@@ -57,6 +64,13 @@ const useApi = () => {
 			create: createAuthobject,
 			update: updateAuthobject,
 			delete: deleteAuthobject,
+		},
+		lilguy: {
+			getAll: fetchLilguys,
+			get: fetchLilguy,
+			create: createLilguy,
+			update: updateLilguy,
+			delete: deleteLilguy,
 		},
 		auth: {
 			register,

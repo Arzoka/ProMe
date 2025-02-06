@@ -18,8 +18,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./server:/app
-      - /app/vendor
+      - ./storage:/var/www/html/storage
     depends_on:
       - db
     networks:

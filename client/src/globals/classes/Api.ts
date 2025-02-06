@@ -1,4 +1,4 @@
-import { AuthobjectType, CreateAuthobjectType, CreateTestobjectType, CreateUserType, LoginUserType, TestobjectType, UserType } from '@/types/api';
+import { AuthobjectType, CreateAuthobjectType, CreateTestobjectType, CreateUserType, LoginUserType, TestobjectType, UserType, CreateLilguyType, LilguyType } from '@/types/api';
 
 export default class Api {
 	private readonly API_URL: string;
@@ -24,6 +24,14 @@ export default class Api {
 		create: (body: CreateAuthobjectType): Promise<AuthobjectType> => this.request('POST', 'authobject/create', body),
 		update: (id: number, body: CreateAuthobjectType): Promise<AuthobjectType> => this.request('PUT', `authobject/update/${id}`, body),
 		delete: (id: number): Promise<AuthobjectType> => this.request('DELETE', `authobject/destroy/${id}`),
+	};
+
+	public lilguy = {
+		getAll: (): Promise<LilguyType[]> => this.request('GET', 'lilguy'),
+		get: (id: number): Promise<LilguyType> => this.request('GET', `lilguy/${id}`),
+		create: (body: CreateLilguyType): Promise<LilguyType> => this.request('POST', 'lilguy/create', body),
+		update: (id: number, body: CreateLilguyType): Promise<LilguyType> => this.request('PUT', `lilguy/update/${id}`, body),
+		delete: (id: number): Promise<LilguyType> => this.request('DELETE', `lilguy/destroy/${id}`),
 	};
 
 	public auth = {
