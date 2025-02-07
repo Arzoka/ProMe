@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
-import { WebsiteRoutes } from '@/routes';
+import router from '@/routes';
 import { RouterProvider } from 'react-router-dom';
 
 const Entrypoint = () => {
+
 	return (
 		<Fragment>
-			<RouterProvider router={ WebsiteRoutes } />
+			<RouterProvider router={ router } />
 		</Fragment> );
 };
 
