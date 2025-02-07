@@ -1,21 +1,14 @@
-import styles from './index.module.scss';
-import { Fragment } from 'react';
 import LilGuyMaker from '@/pages/dashboard/lilguys/create/sub-components/lil-guy-maker';
 import SideBar from '@/pages/dashboard/lilguys/create/sub-components/sidebar';
+import styles from './index.module.scss';
 
 const Create = () => {
 
 	return (
-		<Fragment>
-			<main>
-				<section className={ styles.sideBar }>
-					<SideBar />
-				</section>
-				<section className={ styles.lilGuy }>
-					<LilGuyMaker />
-				</section>
-			</main>
-		</Fragment> );
+		<section className={styles.LilGuyCreateWrapper}>
+			<SideBar />
+			<LilGuyMaker />
+		</section> );
 };
 
 export default Create;
