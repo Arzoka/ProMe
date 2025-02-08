@@ -1,0 +1,21 @@
+.Sidebar {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 25% 1fr 15%;
+
+	header {
+	}
+
+	main {
+		overflow-y: scroll;
+
+		ol {
+			list-style: none;
+
+		}
+	}
+
+	footer {
+	}
+}

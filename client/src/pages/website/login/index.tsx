@@ -14,9 +14,7 @@ const Login = () => {
 				await auth.login({
 					email: data.get('email') as string,
 					password: data.get('password') as string,
-				}).then((res: any) => {
-					if (res.status !== 200) { return }
-
+				}).then(() => {
 					window.location.href = '/dashboard';
 				})
 			}}>

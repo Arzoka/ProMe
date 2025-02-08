@@ -1,0 +1,10 @@
+.DashboardLayout {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	height: 100dvh;
+
+	main {
+		padding: 1rem;
+		overflow-y: scroll;
+	}
+}
