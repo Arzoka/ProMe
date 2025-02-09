@@ -13,7 +13,9 @@ const Sidebar: FC<{SidebarItems: SidebarItemType[]}> = ({SidebarItems}) => {
 
 	return (
 		<aside className={styles.Sidebar}>
-			<header></header>
+			<header>
+				<img alt={"logo"} src={"https://mlockx.cloud/taiga/8.webp"} />
+			</header>
 			<main>
 				<nav>
 					<ol>

@@ -1,12 +1,16 @@
-import Create from '@/pages/dashboard/lilguys/create';
-import Marketplace from '@/pages/dashboard/lilguys';
-import Dashboard from '@/pages/dashboard';
+import { Create, Marketplace, Notes, Root } from '@/pages/dashboard';
+
 
 const DashboardRoutes = [{
 	path: '/dashboard',
 	displayName: 'Dashboard',
 	element:
-		<Dashboard />,
+		<Root />,
+},{
+	path: '/dashboard/notes',
+	displayName: 'Notes',
+	element:
+		<Notes />,
 }, {
 	path: '/dashboard/lilguys',
 	displayName: 'Marketplace',

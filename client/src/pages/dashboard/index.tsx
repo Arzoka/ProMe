@@ -1,11 +1,11 @@
-import { Fragment } from 'react';
+import Root from '@/pages/dashboard/root';
+import Notes from '@/pages/dashboard/notes';
+import Marketplace from '@/pages/dashboard/lilguys';
+import Create from '@/pages/dashboard/lilguys/create';
 
-const Dashboard = () => {
-	return (
-		<Fragment>
-			<p>Reee</p>
-		</Fragment>
-	)
-};
-
-export default Dashboard;
+export {
+	Root,
+	Notes,
+	Marketplace,
+	Create
+}

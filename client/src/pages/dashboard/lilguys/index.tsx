@@ -7,7 +7,7 @@ const LilGuys = () => {
 	return (
 		<Fragment>
 			<div className={styles.red}></div>
-			<p>test</p>
+			<p>Marketplace</p>
 		</Fragment>
 	);
 };
