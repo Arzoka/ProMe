@@ -9,7 +9,7 @@ const Notes = () => {
 
 			<ul className={styles.NoteList}>
 				{Array.from({ length: 10 }).map((_, index) => (
-					<Link className={styles.NotePreview} to={`/dashboard/notes/edit`}>
+					<Link key={index} className={styles.NotePreview} to={`/dashboard/notes/edit`}>
 						<strong>Note Title {index}</strong>
 						<small>09/02/2025 23:26</small>
 					</Link>
