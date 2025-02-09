@@ -1,0 +1,21 @@
+.NoteList {
+  margin-block: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+
+  .NotePreview {
+    border: 1px dotted var(--text-on-primary-color);
+    color: var(--text-on-primary-color);
+    background: none;
+    padding: 0.5rem 1rem;
+    outline: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:focus {
+      outline: 1px solid var(--text-on-primary-color);
+    }
+  }
+}
