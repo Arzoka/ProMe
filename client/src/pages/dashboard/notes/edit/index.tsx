@@ -13,12 +13,12 @@ const EditNote = () => {
 		console.log(correspondingNote);
 	}, [correspondingNote] );
 
-	return (
+	return correspondingNote ? (
 		<Fragment>
-			<h1>Mock Note Title 1</h1>
-			<Editable />
+			<h1>{correspondingNote.title}</h1>
+			<Editable note={correspondingNote} />
 		</Fragment>
-	)
+	) : null
 };
 
 export default EditNote;

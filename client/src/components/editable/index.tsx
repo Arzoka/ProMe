@@ -1,26 +1,28 @@
 import styles from './index.module.scss';
 import useEditable from '@/hooks/custom/useEditable.ts';
-import MockReceivedText from '@/components/editable/mock-received-text.ts';
-import { ParsedFile, ParsedText } from '@/types/app/Editable.ts';
+import { FC } from 'react';
+import { NoteType } from '@/types/api/NoteType.ts';
+import { AttachmentType } from '@/types/api/AttachmentType.ts';
 
-const Editable = () => {
+const Editable: FC<{
+	note: NoteType
+}> = ( { note } ) => {
 	const {
-		parsedText,
 		textAreaRefs,
 		adjustHeight,
-	} = useEditable( MockReceivedText );
+	} = useEditable( note );
 
-	return (
+	return note === null ? null : (
 		<section className={ styles.EditableWrapper }>
-			{ parsedText.map( ( item, index ) => item.isFile ? (
-				<button className={ styles.FilePreview } key={ index }>
-					{ ( item as ParsedFile ).name }
+			{ note.segments.map( ( item, index ) => item.is_file ? (
+				<button className={styles.FilePreview} key={index}>
+					{(item.content as AttachmentType).file.file_name}
 				</button> ) : (
 				<textarea
 					ref={ ( el ) => ( textAreaRefs.current[index] = el ) }
 					onChange={ ( e ) => adjustHeight( e.target ) }
 					key={ index }
-					defaultValue={ ( item as ParsedText ).content }
+					defaultValue={ item.content }
 				/> ) ) }
 		</section> );
 };

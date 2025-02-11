@@ -1,13 +1,11 @@
-import { MutableRefObject, useEffect, useMemo, useRef } from 'react';
-import ParseReceivedTextData from '@/components/editable/ParseReceivedTextData.ts';
-import { ParsedFile, ParsedText } from '@/types/app/Editable.ts';
+import { MutableRefObject, useEffect, useRef } from 'react';
+import { NoteType } from '@/types/api/NoteType.ts';
 
-const useEditable: ( ReceivedTextData: string ) => {
+const useEditable: ( ( note: NoteType ) => {
 	textAreaRefs: MutableRefObject<( HTMLTextAreaElement | null )[]>;
-	parsedText: ( ParsedText | ParsedFile )[];
 	adjustHeight: ( textarea: ( HTMLTextAreaElement | null ) ) => void
-} = ( ReceivedTextData ) => {
-	const parsedText: ( ParsedText | ParsedFile )[] = useMemo( () => ParseReceivedTextData( ReceivedTextData ), [] );
+} ) = ( note ) => {
+	// const parsedText: ( ParsedText | ParsedFile )[] = useMemo( () => ParseReceivedTextData( ReceivedTextData, noParse ), [ReceivedTextData] );
 
 	const textAreaRefs = useRef<( HTMLTextAreaElement | null )[]>( [] );
 
@@ -24,10 +22,10 @@ const useEditable: ( ReceivedTextData: string ) => {
 
 	useEffect( () => {
 		textAreaRefs.current.forEach( adjustHeight );
-	}, [parsedText] );
+	}, [note] );
 
 	return {
-		parsedText,
+		// parsedText,
 		textAreaRefs,
 		adjustHeight,
 	};

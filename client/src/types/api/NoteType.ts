@@ -5,7 +5,7 @@ type CreateNoteType = {
 	title: string;
 }
 
-type NoteType = CreateNoteType & Constants & {segments: SegmentType[]};
+type NoteType = CreateNoteType & Constants & {segments: SegmentType[] };
 
 export type {
 	CreateNoteType,

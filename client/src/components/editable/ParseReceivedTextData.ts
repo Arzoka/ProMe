@@ -11,7 +11,15 @@ type ParsedFile = {
 	fileType: string,
 }
 
-export default function ParseReceivedTextData( text: string ) {
+export default function ParseReceivedTextData( text: string | (ParsedText | ParsedFile)[], noParse:boolean=false ) {
+	if ( typeof text !== 'string' ) {
+		if ( noParse ) {
+			return text;
+		}
+		console.error( 'ParseReceivedTextData: Received data is not a string' );
+		return text;
+	}
+
 	const parsedArray: ( ParsedFile | ParsedText )[] = [];
 
 	text.split( /(\[START-FILE-REFERENCE\].*?\[END-FILE-REFERENCE\])/gs ).forEach( ( segment ) => {
