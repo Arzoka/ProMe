@@ -43,12 +43,13 @@ class NoteController extends Controller
         $segments = $note->segments->sortBy('index')->map(function ($segment)
             {
                 $isFile = $this->isFile($segment->content);
+                $content = $isFile ? $this->getParsedFile($segment->content) : $segment->content;
 
                 return [
                     'id'      => $segment->id,
                     'note_id' => $segment->note_id,
                     'index'   => $segment->index,
-                    'content' => $isFile ? $this->getParsedFile($segment->content) : $segment->content,
+                    'content' => $content,
                     'is_file' => $isFile,
                 ];
             });

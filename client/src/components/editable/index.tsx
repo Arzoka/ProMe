@@ -15,14 +15,14 @@ const Editable: FC<{
 	return note === null ? null : (
 		<section className={ styles.EditableWrapper }>
 			{ note.segments.map( ( item, index ) => item.is_file ? (
-				<button className={styles.FilePreview} key={index}>
-					{(item.content as AttachmentType).file.file_name}
+				<button className={ styles.FilePreview } key={ index }>
+					{ `${ ( item.content as AttachmentType ).file.file_name }.${ ( item.content as AttachmentType ).file.file_extension }` }
 				</button> ) : (
 				<textarea
 					ref={ ( el ) => ( textAreaRefs.current[index] = el ) }
 					onChange={ ( e ) => adjustHeight( e.target ) }
 					key={ index }
-					defaultValue={ item.content }
+					defaultValue={ item.content.replace(/\\n/g, '\n') }
 				/> ) ) }
 		</section> );
 };
