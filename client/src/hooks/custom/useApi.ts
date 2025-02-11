@@ -1,6 +1,7 @@
 import Api from '@/globals/classes/Api.ts';
 import { useCallback, useState } from 'react';
 import { AuthobjectType, CreateAuthobjectType, CreateLilguyType, CreateTestobjectType, CreateUserType, LilguyType, LoginUserType, TestobjectType, UserType } from '@/types/api';
+import { CreateNoteType, NoteType } from '@/types/api/NoteType.ts';
 
 const useApi = () => {
 	const apiInstance = new Api( import.meta.env.VITE_API_URL );
@@ -43,6 +44,13 @@ const useApi = () => {
 	const updateLilguy = useCallback( ( id: number, body: CreateLilguyType ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.update( id, body ), 'Failed to update lilguy' ), [apiInstance, handleRequest] );
 	const deleteLilguy = useCallback( ( id: number ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.delete( id ), 'Failed to delete lilguy' ), [apiInstance, handleRequest] );
 
+	// Note
+	const fetchNotes = useCallback( (): Promise<NoteType[]> => handleRequest( () => apiInstance.note.getAll(), 'Failed to fetch notes' ), [apiInstance, handleRequest] );
+	const fetchNote = useCallback( ( id: number ): Promise<NoteType> => handleRequest( () => apiInstance.note.get( id ), 'Failed to fetch note' ), [apiInstance, handleRequest] );
+	const createNote = useCallback( ( body: CreateNoteType ): Promise<NoteType> => handleRequest( () => apiInstance.note.create( body ), 'Failed to create note' ), [apiInstance, handleRequest] );
+	const updateNote = useCallback( ( id: number, body: CreateNoteType ): Promise<NoteType> => handleRequest( () => apiInstance.note.update( id, body ), 'Failed to update note' ), [apiInstance, handleRequest] );
+	const deleteNote = useCallback( ( id: number ): Promise<NoteType> => handleRequest( () => apiInstance.note.delete( id ), 'Failed to delete note' ), [apiInstance, handleRequest] );
+
 	// Auth
 	const register = useCallback( ( body: CreateUserType ): Promise<UserType> => handleRequest( () => apiInstance.auth.register( body ), 'Failed to register' ), [apiInstance, handleRequest] );
 	const login = useCallback( ( body: LoginUserType ): Promise<UserType> => handleRequest( () => apiInstance.auth.login( body ), 'Failed to login' ), [apiInstance, handleRequest] );
@@ -71,6 +79,13 @@ const useApi = () => {
 			create: createLilguy,
 			update: updateLilguy,
 			delete: deleteLilguy,
+		},
+		note: {
+			getAll: fetchNotes,
+			get: fetchNote,
+			create: createNote,
+			update: updateNote,
+			delete: deleteNote,
 		},
 		auth: {
 			register,

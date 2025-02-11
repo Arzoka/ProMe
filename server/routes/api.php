@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthobjectController;
 use App\Http\Controllers\Auth\LilguyController;
+use App\Http\Controllers\Auth\NoteController;
 use App\Http\Controllers\TestobjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/lilguy/create', [LilguyController::class, 'store']);
     Route::put('/lilguy/update/{id}', [LilguyController::class, 'update']);
     Route::delete('/lilguy/destroy/{id}', [LilguyController::class, 'destroy']);
+
+    Route::get('/note', [NoteController::class, 'index']);
+    Route::get('/note/{id}', [NoteController::class, 'show']);
+    Route::post('/note/create', [NoteController::class, 'store']);
+    Route::put('/note/update/{id}', [NoteController::class, 'update']);
+    Route::delete('/note/destroy/{id}', [NoteController::class, 'destroy']);
 });
 

@@ -16,6 +16,10 @@ const DashboardRoutes = [{
 	path: '/dashboard/notes/edit',
 	element:
 		<EditNote />,
+},{
+	path: '/dashboard/notes/edit/:id',
+	element:
+		<EditNote />,
 }, {
 	path: '/dashboard/lilguys',
 	displayName: 'Marketplace',

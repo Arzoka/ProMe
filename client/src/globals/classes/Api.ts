@@ -1,5 +1,6 @@
 import { AuthobjectType, CreateAuthobjectType, CreateLilguyType, CreateTestobjectType, CreateUserType, LilguyType, LoginUserType, TestobjectType, UserType } from '@/types/api';
 import { toast } from 'react-toastify';
+import { CreateNoteType, NoteType } from '@/types/api/NoteType.ts';
 
 export default class Api {
 	private readonly API_URL: string;
@@ -33,6 +34,15 @@ export default class Api {
 		create: ( body: CreateLilguyType ): Promise<LilguyType> => this.request( 'POST', 'lilguy/create', body ),
 		update: ( id: number, body: CreateLilguyType ): Promise<LilguyType> => this.request( 'PUT', `lilguy/update/${ id }`, body ),
 		delete: ( id: number ): Promise<LilguyType> => this.request( 'DELETE', `lilguy/destroy/${ id }` ),
+	};
+
+	// Note
+	public note = {
+		getAll: (): Promise<NoteType[]> => this.request( 'GET', 'note' ),
+		get: ( id: number ): Promise<NoteType> => this.request( 'GET', `note/${ id }` ),
+		create: ( body: CreateNoteType ): Promise<NoteType> => this.request( 'POST', 'note/create', body ),
+		update: ( id: number, body: CreateNoteType ): Promise<NoteType> => this.request( 'PUT', `note/update/${ id }`, body ),
+		delete: ( id: number ): Promise<NoteType> => this.request( 'DELETE', `note/destroy/${ id }` ),
 	};
 
 	public auth = {
