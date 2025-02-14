@@ -1,0 +1,12 @@
+.ball {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor:none;
+  pointer-events: none;
+}

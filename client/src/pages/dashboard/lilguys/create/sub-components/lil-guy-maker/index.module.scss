@@ -4,11 +4,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: blue;
 
-  .test{
+  .square{
     width: 50%;
-    height: 50%;
+    aspect-ratio: 1;
     background: yellow;
+
+    .circle{
+      width: 100%;
+      height: 100%;
+      background: green;
+      border-radius: 50%;
+    }
   }
 }
