@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import useApi from '@/hooks/custom/useApi.ts';
 
 const Login = () => {
@@ -6,9 +5,21 @@ const Login = () => {
 		auth,
 	} = useApi();
 	return (
-		<Fragment>
+		<section style={{
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			justifyContent: 'center',
+			gap: '5rem',
+			height: '100vh'
+		}}>
 			<h1>Login</h1>
-			<form onSubmit={async (e) => {
+			<form style={{
+				display: 'flex',
+				flexDirection: 'column',
+				width: '30%',
+				gap: '0.5rem'
+			}} onSubmit={async (e) => {
 				e.preventDefault();
 				const data = new FormData(e.target as HTMLFormElement);
 				await auth.login({
@@ -18,17 +29,23 @@ const Login = () => {
 					window.location.href = '/dashboard';
 				})
 			}}>
-				<label>
+				<label style={{
+					display: 'flex',
+					flexDirection: 'column'
+				}}>
 					<span>Email</span>
 					<input type="email" name="email" />
 				</label>
-				<label>
+				<label style={ {
+					display: 'flex',
+					flexDirection: 'column',
+				} }>
 					<span>Password</span>
 					<input type="password" name="password" />
 				</label>
 				<button type="submit">Login</button>
 			</form>
-		</Fragment> );
+		</section> );
 };
 
 export default Login;

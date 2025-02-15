@@ -11,7 +11,7 @@ type LoginUserType = {
 	password: string;
 }
 
-type UserType = CreateUserType & Constants;
+type UserType = {name: string; email: string;} & Constants;
 
 export type {
 	CreateUserType,

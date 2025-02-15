@@ -16,8 +16,13 @@ class Lilguy extends Model
         'name',
         'image',
         'price',
+        'description',
     ];
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function getImageAttribute($value)
     {
         return asset('storage/' . $value);

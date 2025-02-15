@@ -12,3 +12,12 @@ body {
 	color: var(--text-on-primary-color);
 	min-height: 100vh;
 }
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

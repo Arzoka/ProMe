@@ -10,4 +10,23 @@
     font-size: 2rem;
     margin-bottom: 1rem;
   }
+
+  .ColorList {
+    width: 100%;
+    padding: 0.5rem;
+    grid-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr) ) ;
+
+    li {
+      width: 100%;
+      height: 100%;
+      list-style: none;
+    }
+
+    .ColorSquare {
+      aspect-ratio: 1/1;
+      width: 100%;
+    }
+  }
 }

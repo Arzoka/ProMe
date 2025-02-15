@@ -1,5 +1,6 @@
 import { Create, Marketplace, Notes, Root } from '@/pages/dashboard';
 import EditNote from '@/pages/dashboard/notes/edit';
+import SpecificLilGuy from '@/pages/dashboard/lilguys/:id';
 
 
 const DashboardRoutes = [{
@@ -29,6 +30,10 @@ const DashboardRoutes = [{
 	path: '/dashboard/lilguys/create',
 	element:
 		<Create />,
+},{
+	path: '/dashboard/lilguys/:id',
+	element:
+		<SpecificLilGuy />,
 }];
 
 export default DashboardRoutes;

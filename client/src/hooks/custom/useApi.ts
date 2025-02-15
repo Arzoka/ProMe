@@ -1,7 +1,8 @@
 import Api from '@/globals/classes/Api.ts';
 import { useCallback, useState } from 'react';
-import { AuthobjectType, CreateAuthobjectType, CreateLilguyType, CreateTestobjectType, CreateUserType, LilguyType, LoginUserType, TestobjectType, UserType } from '@/types/api';
+import { AuthobjectType, CreateAuthobjectType, CreateLilguyType, CreateTestobjectType, CreateUserType, LoginUserType, TestobjectType, UserType } from '@/types/api';
 import { CreateNoteType, NoteType } from '@/types/api/NoteType.ts';
+import { FetchedLilguyType } from '@/types/api/LilguyType.ts';
 
 const useApi = () => {
 	const apiInstance = new Api( import.meta.env.VITE_API_URL );
@@ -38,11 +39,11 @@ const useApi = () => {
 	const deleteAuthobject = useCallback( ( id: number ): Promise<AuthobjectType> => handleRequest( () => apiInstance.authobject.delete( id ), 'Failed to delete authobject' ), [apiInstance, handleRequest] );
 
 	// Lilguy
-	const fetchLilguys = useCallback( (): Promise<LilguyType[]> => handleRequest( () => apiInstance.lilguy.getAll(), 'Failed to fetch lilguys' ), [apiInstance, handleRequest] );
-	const fetchLilguy = useCallback( ( id: number ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.get( id ), 'Failed to fetch lilguy' ), [apiInstance, handleRequest] );
-	const createLilguy = useCallback( ( body: CreateLilguyType ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.create( body ), 'Failed to create lilguy' ), [apiInstance, handleRequest] );
-	const updateLilguy = useCallback( ( id: number, body: CreateLilguyType ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.update( id, body ), 'Failed to update lilguy' ), [apiInstance, handleRequest] );
-	const deleteLilguy = useCallback( ( id: number ): Promise<LilguyType> => handleRequest( () => apiInstance.lilguy.delete( id ), 'Failed to delete lilguy' ), [apiInstance, handleRequest] );
+	const fetchLilguys = useCallback( (): Promise<FetchedLilguyType[]> => handleRequest( () => apiInstance.lilguy.getAll(), 'Failed to fetch lilguys' ), [apiInstance, handleRequest] );
+	const fetchLilguy = useCallback( ( id: number ): Promise<FetchedLilguyType> => handleRequest( () => apiInstance.lilguy.get( id ), 'Failed to fetch lilguy' ), [apiInstance, handleRequest] );
+	const createLilguy = useCallback( ( body: CreateLilguyType ): Promise<FetchedLilguyType> => handleRequest( () => apiInstance.lilguy.create( body ), 'Failed to create lilguy' ), [apiInstance, handleRequest] );
+	const updateLilguy = useCallback( ( id: number, body: CreateLilguyType ): Promise<FetchedLilguyType> => handleRequest( () => apiInstance.lilguy.update( id, body ), 'Failed to update lilguy' ), [apiInstance, handleRequest] );
+	const deleteLilguy = useCallback( ( id: number ): Promise<FetchedLilguyType> => handleRequest( () => apiInstance.lilguy.delete( id ), 'Failed to delete lilguy' ), [apiInstance, handleRequest] );
 
 	// Note
 	const fetchNotes = useCallback( (): Promise<NoteType[]> => handleRequest( () => apiInstance.note.getAll(), 'Failed to fetch notes' ), [apiInstance, handleRequest] );

@@ -16,7 +16,7 @@ class LilguyController extends Controller
      */
     private function saveImageAsPath($imageData): string
     {
-        $fileName = uniqid('workshop_', true) . '.webp';
+        $fileName = uniqid('lilguy_', true) . '.webp';
         $filePath = 'images/' . $fileName;
 
         Storage::disk('public')->put($filePath, file_get_contents($imageData));
@@ -26,14 +26,14 @@ class LilguyController extends Controller
 
     public function index() : JsonResponse
     {
-        $lilguys = Lilguy::all();
+        $lilguys = Lilguy::with('creator')->get();
 
         return response()->json($lilguys, 200);
     }
 
     public function show($id) : JsonResponse
     {
-        $lilguy = Lilguy::findOrFail($id);
+        $lilguy = Lilguy::with('creator')->findOrFail($id);
 
         return response()->json($lilguy, 200);
     }
@@ -44,6 +44,7 @@ class LilguyController extends Controller
             'name' => 'required|string',
             'image' => 'required|string',
             'price' => 'required|numeric',
+            'description' => 'nullable|string',
         ]);
 
         $imagePath = $this->saveImageAsPath($request->image);
@@ -68,6 +69,7 @@ class LilguyController extends Controller
             'name' => 'nullable|string',
             'image' => 'nullable|string',
             'price' => 'nullable|numeric',
+            'description' => 'nullable|string',
         ]);
 
 

@@ -1,5 +1,29 @@
-.red{
-  width: 5rem;
-  height: 5rem;
-  background: red;
+.LilguysList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  list-style: none;
+
+  li {
+    aspect-ratio: 1/1;
+    width: 100%;
+
+    a {
+      width: 100%;
+      height: 100%;
+      color: var(--text-on-primary-color);
+
+      display: flex;
+      flex-direction: column;
+
+      img {
+        aspect-ratio: 1;
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      outline: 1px dotted var(--text-on-primary-color);
+    }
+  }
 }
